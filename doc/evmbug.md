@@ -30,19 +30,19 @@ All operands are hexadecimal.
 
 **IM** (Inspect/Change Memory)
 
-Format: IM [<start address>]<Return>
+`Format: IM [<start address>]<Return>`
 
 Displays memory address, contents, and opens the memory location for a change. The start address defaults to >0000 if not specified. Pressing <Return> writes any specified new value and returns to the command prompt. Pressing <Space> writes any specified new value and display the next address. Pressing <Minus> writes any specified new value and displays the previous address.
 
 **DM** (Dump Memory)
 
-Format: DM [<start address>],[<stop address>]<Return>
+`Format: DM [<start address>],[<stop address>]<Return>`
 
 Displays the contents of memory from the start address to the stop address. Both addresses default to >0000 if not specified. Each line of output consists of the address of the first data word followed by eight data words. Pressing any key during a memory listing terminates the process.
 
 **IWR** (Inspect/Change Workspace Register)
 
-Format: IWR [<register number>]<Return>
+`Format: IWR [<register number>]<Return>`
 
 If no register number is specified, the command displays the contents of all the workspace registers and returns to the command prompt. The workspace is at the location pointed to by the workspace pointer set through the 'IR' command (this defaults to one of EVMBUG's own workspaces at >EC00 at power on).
 
@@ -50,13 +50,13 @@ If a register number is specified, the command displays the contents of the spec
 
 **IR** (Inspect/Change WP, PC and ST Registers) 
 
-Format: IR<Return>
+`Format: IR<Return>`
 
 Displays first the value of the workspace pointer (WP). A new value can be specified. Pressing <Return> writes any specified new value and returns to the command prompt. Pressing <Space> writes any specified new value and displays the value of the program counter (PC) followed by the status register (ST), which can be inspected and changed in the same way.
 
 **EX** (Execute)
 
-Format: EX<Return>
+`Format: EX<Return>`
 
 Starts program execution using the values in the workspace pointer, program counter and status register set through the 'R' command.
 
@@ -64,7 +64,7 @@ To return from a user program to EVMBUG, use the instruction B @>0080 or B @>014
 
 **EXB** (Execute With Breakpoint)
 
-Format: EX [<breakpoint address>]<Return>
+`Format: EX [<breakpoint address>]<Return>`
 
 If a breakpoint address is specified, the command installs a breakpoint at the specified address then starts program execution using the values in the workspace pointer, program counter and status register set through the 'IR' command. When the breakpoint address is executed, the contents of the workspace pointer, program counter and status register are displayed and control returns to the command prompt. To continue running the program, either use the 'EXB' command again to break at another point later in the program, or use the 'EX' command.
 
@@ -74,7 +74,7 @@ If no breakpoint address is specified, the 'EXB' command performs the same as th
 
 **SS** (Single Step)
 
-Format: SS<Return>
+`Format: SS<Return>`
 
 Executes one instruction using the values in the workspace pointer, program counter and status register set through the 'IR' command, the prints the contents of the workspace pointer, program counter and status register. Successive instructions can be executed by repeated 'SS' commands.
 
@@ -82,13 +82,13 @@ Note that incorrect results are obtained when the 'SS' command causes execution 
 
 **IC** (Inspect/Change CRU) 
 
-Format: IC [<CRU base address>],[<count>]<Return>
+`Format: IC [<CRU base address>],[<count>]<Return>`
 
 Displays <count> CRU bits, right justified, read from the CRU base address. The base address defaults to >0000 if not specified, and the count to 0 (=16 CRU bits).A new value for the specified bits can be specified. Pressing <Return> writes any specified new value and returns to the command prompt. Pressing <Space> or <Minus> writes any specified new value and displays the same CRU bits again.
 
 **FD** (Find) 
 
-Format: FD [<start address>],[<stop address>],[<value>]{<Return> or <Minus>}
+`Format: FD [<start address>],[<stop address>],[<value>]{<Return> or <Minus>}`
 
 Compares the contents of memory locations from the start address to the stop address with the value specified, and prints the memory addresses whose contents equal the given value. The default for all three parameters, if not specified, is >0000.
 
@@ -96,37 +96,41 @@ If the command entry is terminated with <Return>, the search will be for a word 
 
 **HEX** (Hex Arithmetic)
 
-Format: HEX [<number 1>],[<number 2>]<Return>
+`Format: HEX [<number 1>],[<number 2>]<Return>`
 
 Prints the sum and difference of the two numbers given.
 
-**DMC** (Dump RAM Image) [Command intended to be used with a TI 733 ASR or equivalent data terminal with a cassette unit or an ASR 33 teletypewriter with a paper tape unit]
+**DMC** (Dump RAM Image)
 
-Format: DMC [<start address>],[<stop address>],[<entry address>],IDT=[<name>]<Space>
+Command intended to be used with a TI 733 ASR or equivalent data terminal with a cassette unit or an ASR 33 teletypewriter with a paper tape unit
+
+`Format: DMC [<start address>],[<stop address>],[<entry address>],IDT=[<name>]<Space>`
 
 Dumps data in 990 object record format from the memory start address to the stop address. The entry address is the address in memory of the start of the program.
 
-**LMC** (Tag Format Loader) [Command intended to be used with a TI 733 ASR or equivalent data terminal with a cassette unit or an ASR 33 teletypewriter with a paper tape unit]
+**LMC** (Tag Format Loader)
 
-Format: LMC [<bias>]<Return>
+Command intended to be used with a TI 733 ASR or equivalent data terminal with a cassette unit or an ASR 33 teletypewriter with a paper tape unit
+
+`Format: LMC [<bias>]<Return>`
 
 Loads data in 990 tagged object record format into memory. The optional bias parameter is the relocation bias (starting address in RAM), and defaults to >0. Nothing is displayed as data is loaded. After the data has loaded, the module identifier (IDT) is printed.
 
 **UNX** (Boot Unix)
 
-Format: UNX<Return>
+`Format: UNX<Return>`
 
 Run the first stage boot loader for Unix
 
 **XAE** (Line-By-Line Assembler, retain symbol table)
 
-Format: XAE [<start address>]<Return>
+`Format: XAE [<start address>]<Return>`
 
 Executes the resident Line-By-Line Assembler, starting assembly at the specified start address, and retaining any symbol table from a previous run of the assembler. For details of the assembler, see the 'XA' command below.
 
 **XA** (Line-By-Line Assembler, clear symbol table)
 
-Format: XA [<start address>]<Return>
+`Format: XA [<start address>]<Return>`
 
 Executes the resident Line-By-Line Assembler, starting assembly at the specified start address, and clearing the symbol table.
 
@@ -138,13 +142,15 @@ The END directive displays the number of unresolved references, but not the text
 
 **XRA** (Disassembler)
 
-Format: XRA [<start address>],[<stop address>]<Return>
+`Format: XRA [<start address>],[<stop address>]<Return>`
 
 Uses the resident disassembler to disassemble the code from the start address to the stop address.
 
-**XCL** (Terminal Mode) [Command intended to be used with the TMS 9995 evaluation module only]
+**XCL** (Terminal Mode)
 
-Format: XCL<Return>
+Command intended to be used with the TMS 9995 evaluation module only
+
+`Format: XCL<Return>`
 
 Switches the module operation mode to work with a TI AMPL development system connected to RS-232 port P2.
 
