@@ -1,3 +1,4 @@
+```
 Warning: Yosys has only limited support for tri-state logic at the moment. (sdram.v:103)
 Warning: Yosys has only limited support for tri-state logic at the moment. (spi_ide.v:67)
 Info: constraining clock net 'clk_25mhz' to 25.00 MHz
@@ -717,4 +718,4 @@ Info: [ 63526,  68199) |+
 Info: [ 68199,  72872) | 
 Info: [ 72872,  77545) |+
 Info: [ 77545,  82218) |***+
-
+```
