@@ -35,7 +35,9 @@ Erik Piehl (a.k.a. *Speccery*) convinced me that doing the prototyping in an FPG
 As of Summer 2020 the status of work is that the Mini Cortex has been implemented in pure Verilog and runs the same Unix software as the original Mini-Cortex. The only thing that is not implemented yet is the TMS9918 VDP (or more accurately the F18A plug-in) -- this is not used for Unix.
 
 ## Background reading & questions
+
 **TMS99xx chip family**
+
 Wikipedia has a short introduction for the [TI990 mini computer](https://en.wikipedia.org/wiki/TI-990) archtiecture, on which the 9900 series of microprocessors is based. Beyond that, the chip datasheets provide a wealth of information:
 
 * The 9995 CPU datasheet is [here](https://ftp.whtech.com/datasheets%20and%20manuals/Datasheets%20-%20TI/TMS9995.pdf)
@@ -44,6 +46,7 @@ Wikipedia has a short introduction for the [TI990 mini computer](https://en.wiki
 * The 9911 DMA controller datasheet is [here](http://www.powertrancortex.com/hardware/datasheets/TMS9911.pdf) (note: the Mini Cortex does not use this chip, but a future design will)
 
 **Ancient Unix**
+
 Ancient Unix generally refers to the 16-bit Unix versions of the 1970's, but increasingly also to the 32-bit versions of the 1980's. They all share the unique property that the amount of source code is manageable and the entire system can be understood by a single person on a hobby time budget.
 
 The most well known book about early Unix is [John Lyons' *Commentary on Unix*](https://en.wikipedia.org/wiki/Lions%27_Commentary_on_UNIX_6th_Edition,_with_Source_Code), which was the most copied book of its time.
