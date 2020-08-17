@@ -36,6 +36,7 @@ The model has 8KB of ROM with just the [EVMBUG monitor]() program in it. This ca
 The repo contains everything you need to build the project using the Open Source tool chain. The build process is documented in the **make.sh** build script:
 * Yosys should only report two warnings, both for tri-state support. The design necessarily uses two tris-tate buses (the SDRAM databus and the SPI miso line) and these warnings cannot be avoided.
 * NextPNR should operate wihout warnings or errors. Fmax timing limits should be comfortably within bounds (reporting >30Mhz for the CPU clock and >180MHz for the SDRAM clock).
+Sample output of the build process is [available here](https://gitlab.com/pnru/cortex/-/blob/master/doc/build_report.md).
 
 On the ESP32 make sure you have Micropython installed, and Emard's **ecp5** and **uftpd** modules. Make sure uftpd is running. The make script will install:
 * spi_ide.py to the root directory
@@ -51,11 +52,19 @@ Start the monitor ROM by pressing the enter key. The response should be:
 EVMBUG R1.0
 MON? 
 ```
-Documentation for the EVMBUG monitor [is here](). To start the Unix boot process enter the command `UNX`. Unix should now boot. If it appears to hang, probably the SPI_IDE module on the ESP32 is not running.
+Documentation for the [EVMBUG monitor is here](https://gitlab.com/pnru/cortex/-/blob/master/doc/evmbug.md). To start the Unix boot process enter the command `UNX`. Unix should now boot. If it appears to hang, probably the SPI_IDE module on the ESP32 is not running.
 ```
+EVMBUG R1.0
+MON? UNX
+
 Mem........512KB
 Login:
 ```
 At the login prompt type `root` (no password needed) and you will end up in a super user shell. The available user programs are in `/bin`.
 
 If the machine hangs, press btn0 (PWR) to reset and restart.
+
+# Hacking
+
+For a list of resources and hacking ideas, [see this page](https://gitlab.com/pnru/cortex/-/blob/master/doc/hacking.md)
+
