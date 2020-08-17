@@ -9,7 +9,7 @@ class SPI_IDE:
     self.buf  = bytearray(8)
     self.get  = bytearray([1,0,0,0,0,0,0,0])
     self.data = bytearray(512)
-    self.dsk  = open("/sd/unix.dsk","ab+")
+    self.dsk  = open("/sd/cortex/unix.dsk","ab+")
     self.wr   = bytearray([4])
     self.rd   = bytearray([3])
     self.mode = 0
