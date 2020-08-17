@@ -1,6 +1,13 @@
+**Yosys**
+
 ```
 Warning: Yosys has only limited support for tri-state logic at the moment. (sdram.v:103)
 Warning: Yosys has only limited support for tri-state logic at the moment. (spi_ide.v:67)
+```
+
+**NextPNR**
+
+```
 Info: constraining clock net 'clk_25mhz' to 25.00 MHz
 
 Info: Logic utilisation before packing:
