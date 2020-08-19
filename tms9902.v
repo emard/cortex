@@ -25,7 +25,7 @@ module tms9902 (CLK, nRTS, nDSR, nCTS, nINT, nCE, CRUOUT, CRUIN, CRUCLK, XOUT, R
   // CLOCK DIVIDER
   // ==========================================================================
 
-  `define MHz 25
+  `define MHz 27
   reg    [5:0] clkctr_q = 0, clkctr_d;
   wire   bitclk;
   
