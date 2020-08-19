@@ -10,14 +10,12 @@ yosys -q -p "synth_ecp5 -json sys.json" sys.v tms99095.v tms9902.v rom.v sdram.v
 
 # place & route
 # assumes 25F device
-nextpnr-ecp5 --25k --package CABGA381 --json sys.json --lpf ulx3s.lpf --textcfg sys.cfg 
+nextpnr-ecp5 --12k --package CABGA381 --json sys.json --lpf ulx3s.lpf --textcfg sys.cfg
 
 # pack bitstream
 # idcode only needed when sending bitstream to 12F devices
-ecppack  sys.cfg sys.bit --idcode 0x21111043
+#ecppack  sys.cfg sys.bit --idcode 0x21111043
+ecppack  sys.cfg sys.bit --compress
 
 # send to ULX3S board (store in configuration RAM)
 #ujprog sys.bit
-
-
-
